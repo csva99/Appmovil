@@ -1,8 +1,21 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      <div>
+        <a href="home" class="textonav">TellevoApp</a>
+      </div>
+      
+      <div class="btnsnav">
+      <ion-button fill="solid" class="btnin" [routerLink]="['/login']">
+        Iniciar Sesion
+      </ion-button>
+      <ion-button fill="outline" class="btnreg" [routerLink]="['/registro']">
+        Registrarse
+      </ion-button>
+      </div>
     </ion-title>
+
+
   </ion-toolbar>
 </ion-header>
 
@@ -17,4 +30,5 @@
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
+
 </ion-content>
