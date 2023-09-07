@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import{
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder
-}from '@angular/forms'
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -14,40 +8,55 @@ import { AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  formularioLogin: FormGroup;
+  constructor(private router: Router, private activatedRouter: ActivatedRoute, public alertController: AlertController) { }
 
-  constructor(public fb: FormBuilder, public alertController: AlertController) {
-    this.formularioLogin = this.fb.group({
-      'nombre' : new FormControl("",Validators.required),
-      'password' : new FormControl("",Validators.required)
+  public mensaje = "";
 
+  public alertButtons = ['OK'];
+  public user = {
+    usuario: "",
+    password: ""
+  }
+  public informacion = {
+    nombre: "",
+    apellido: "",
+    auto: "",
+    fecha: ""
+  }
+
+  ngOnInit() {
+    this.activatedRouter.queryParams.subscribe(() => {
+      let state = this.router.getCurrentNavigation()?.extras.state;
+      if (state) {
+        this.user.usuario = state['user'].usuario;
+        this.user.password = state['user'].password;
+        console.log(this.user);
+      }
     })
   }
 
-
-
-  ngOnInit() {
+  async guardar(){
+    if (this.informacion.nombre != "" && this.informacion.apellido != "" && this.informacion.auto != "" && this.informacion.fecha != "") {
+      const alert = await this.alertController.create({
+        header: 'Cambio Exitoso.',
+        message: 'Se guardaron los cambios realizados.',
+        buttons: ['Aceptar'],
+      });
+      await alert.present();
+      localStorage.setItem("Datos", JSON.stringify(this.informacion));
+    } else {
+      const alert = await this.alertController.create({
+        header: 'Formulario incompleto.',
+        message: 'Porfavor complete todos los campos.',
+        buttons: ['Aceptar'],
+      });
+      await alert.present();
+    }
   }
 
-  async ingresar() {
-    var f = this.formularioLogin.value;
-    var usuarioString = localStorage.getItem('usuario');
-    if (usuarioString !== null) {
-      var usuario = JSON.parse(usuarioString);
-      if (usuario.email == f.email && usuario.password == f.password) {
-        console.log('Ingresado');
-        localStorage.setItem('ingresado', 'true');
-      } else {
-        const alert = await this.alertController.create({
-          header: 'Datos incorrectos',
-          message: 'Correo y/o contraseña incorrecto(s)',
-          buttons: ['Aceptar'],
-        });
-        await alert.present();
-      }
-    } else {
-      // Manejo de caso cuando no se encuentra el valor en localStorage
-    }
+  salir(){
+    this.router.navigate(['home']);
+    localStorage.removeItem("Datos");
   }
 
 }

@@ -1,41 +1,46 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
+.navreg{
   text-decoration: none;
 }
 
-.textonav{
-  text-decoration: none;
-}
-
-.texto2{
-  color: aquamarine;
-}
-
-.btnsnav{
+.titulo{
   display: flex;
-  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+}
+.cont{
+  background-image: url(https://i.pinimg.com/736x/53/67/02/53670256e1dc221b4815dc878ba395f2.jpg) !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  opacity: 10px;
+}
+
+.cuerpocard{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lista{
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.imghome{
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.input{
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+// -------------Css Registro-------
+
+.reg{
+  display: flex;
+  justify-content: center;
   align-items: center;
 }

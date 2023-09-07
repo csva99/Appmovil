@@ -1,44 +1,48 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <a href="home" slot="start" class="navreg">TellevoApp</a>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-  <ion-card>
-    <ion-card-header>
-      <ion-buttons slot="start">
-        <ion-back-button>Volver</ion-back-button>
-      </ion-buttons>
-      <ion-card-title>Login</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <form [formGroup]="formularioLogin">
-        <ion-item>
-          <ion-label position="floating">Correo</ion-label>
-          <ion-input formControlName="email" type="email"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Contraseña</ion-label>
-          <ion-input formControlName="password" type="password"></ion-input>
-        </ion-item>
-      </form>
-      <br>
-      <ion-button (click)="ingresar()">
-        Ingresar
-      </ion-button>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-footer>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="end">
-        <ion-button [routerLink]="['/restablecerpass']">Olvidé mi contraseña</ion-button>
-        <ion-button [routerLink]="['/registro']">Registrarse</ion-button>
-      </ion-buttons>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Login</ion-title>
     </ion-toolbar>
-  </ion-footer>
+  </ion-header>
+  <div id="container">
+    <h1 id="titulo">
+      Bienvenido!
+    </h1>
+    <ion-label>Usuario: {{user.usuario}}</ion-label><br><br>
+
+    <ion-list id="formulario">
+      <ion-label id="sub">Informacion Adicional</ion-label><br>
+      <ion-input [(ngModel)]="informacion.nombre" type="text" expand="full" label="Nombre" placeholder="Ingrese Nombre"
+        slot="start"></ion-input>
+      <ion-input [(ngModel)]="informacion.apellido" type="text" expand="full" label="Apellido"
+        placeholder="Ingrese Apellido" slot="start"></ion-input>
+      <ion-select [(ngModel)]="informacion.auto" label="Movilizacion propia:" interface="action-sheet"
+        placeholder="Seleccione Opcion" slot="center">
+        <ion-select-option value="Noposee">No poseo</ion-select-option>
+        <ion-select-option value="Posee">Poseo</ion-select-option>
+      </ion-select>
+      <ion-input [(ngModel)]="informacion.fecha" type="date" expand="full" label="Fecha Nacimiento"
+        placeholder="Ingrese Fecha" slot="start">
+      </ion-input>
+
+        <ion-button slot="start" id="present-alert" (click)="guardar()">
+          Guardar
+        </ion-button>
+        <ion-button slot="end" color="danger" (click)="salir()">
+          salir
+        </ion-button>
+
+    </ion-list>
+  </div>
 </ion-content>
 
 
