@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { AlertController, IonModal } from '@ionic/angular';
 import { ViewChild } from '@angular/core'
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',

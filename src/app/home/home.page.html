@@ -10,9 +10,11 @@
     <ion-card-header class="titulo">
       <ion-card-title>Credenciales</ion-card-title>
     </ion-card-header>
-    <ion-card-content class="cuerpocard">
-      <ion-list class="lista">
 
+
+    <ion-card-content class="cuerpocard">
+
+      <ion-list class="lista">
         <ion-item class="input">
           <ion-input class="input" [(ngModel)]="user.usuario" label="Nombre Usuario" labelPlacement="floating"
           placeholder="Ingrese su Usuario">
@@ -44,8 +46,9 @@
   </ion-card>
 
   <ion-alert trigger="present-alert" header="Registro" subHeader="{{mensaje}}" 
-      [buttons]="alertButtons"></ion-alert>
-<ion-modal trigger="open-modal">
+      [buttons]="alertButtons">
+    </ion-alert>
+  <ion-modal trigger="open-modal">
       <ng-template>
         <ion-header>
           <ion-toolbar class="nav">
