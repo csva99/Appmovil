@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import { AutenticacionService } from '../servicios/autenticacion.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +20,7 @@ export class AuthGuard implements CanActivate {
       this.router.navigate(['/home']);
       return false;
     }
+    
   }
 
 }
