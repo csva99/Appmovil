@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'restablecerpass',
     loadChildren: () => import('./restablecerpass/restablecerpass.module').then( m => m.RestablecerpassPageModule)
+  },  {
+    path: 'posts',
+    loadChildren: () => import('./posts/posts/posts.module').then( m => m.PostsPageModule)
   },
+
 ];
 
 @NgModule({

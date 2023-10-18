@@ -1,6 +1,7 @@
 import { Component,ViewChild,ElementRef} from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { IonModal,AlertController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 
 
@@ -68,6 +69,7 @@ export class HomePage {
   async irarestablecer(){
     this.router.navigate(['restablecerpass'])
   }
+
 
 }
 
